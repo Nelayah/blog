@@ -1,20 +1,19 @@
-import { Component } from 'react';
 import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
 
-import Child1 from './components/child1.jsx'
+import rootRoute from './routes/init';
+import reducers from './reducers/init';
 
-import './assets/sass/test.scss';
-import testPng from './assets/images/test.png';
+let store = createStore(reducers);
+let rootElement = document.getElementById('root');
 
-class Index extends Component {
-	render() {
-		return(
-			<div className="wrap">
-				<p className="text">Hello world!</p>
-				<img src={ testPng } alt="" />
-				<Child1 />
-			</div>
-		)
-	}
-}
-render(<Index />, document.getElementById('root'));
+render((
+	<Provider store={ store }>
+		<Router
+			history={ browserHistory }
+			routes={ rootRoute }
+		/>
+	</Provider>
+), rootElement);

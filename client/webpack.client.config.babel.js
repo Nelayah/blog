@@ -1,14 +1,29 @@
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import path from 'path';
 import webpack from 'webpack';
-
 import { RootMostResolvePlugin } from 'webpack-dependency-suite';
 
+const env = process.env.NODE_ENV;
+const plugins = env === "development" ? [] : [
+	new webpack.optimize.UglifyJsPlugin({
+		beautify: false,
+		mangle: {
+			screw_ie8: true,
+			keep_fnames: true
+		},
+		compress: {
+			screw_ie8: true,
+			warnings: false
+		},
+		comments: false
+	})
+]
 module.exports = {
 	devServer: {
 		contentBase: path.join(__dirname, "dist"),
 		compress: true,
-		port: 9000
+		port: 9000,
+		historyApiFallback: true
 	},
 	entry: {
 		index: path.resolve('./src/index.jsx'),
@@ -46,7 +61,7 @@ module.exports = {
 		}]
 	},
 	resolve: {
-		plugins: [
+		plugins: env === "development" ? [] : [
 			// removes duplicate submodules if the required SemVer is satisfied
 			// preferring local ones (closest to rootDir)
 			// useful especially when using linked modules
@@ -70,23 +85,12 @@ module.exports = {
 		}),
 		new ExtractTextPlugin("./static/css/styles.css"),
 		new webpack.LoaderOptionsPlugin({
-			minimize: true,
-			debug: false
+			minimize: env === "development" ? false : true,
+			debug: env === "development" ? true : false
 		}),
-		new webpack.optimize.UglifyJsPlugin({
-			beautify: false,
-			mangle: {
-				screw_ie8: true,
-				keep_fnames: true
-			},
-			compress: {
-				screw_ie8: true,
-				warnings: false
-			},
-			comments: false
-		}),
+		...plugins,
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production')
+			'process.env.NODE_ENV': JSON.stringify(env)
 		}),
 		new webpack.NoEmitOnErrorsPlugin()
 	]
