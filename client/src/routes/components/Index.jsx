@@ -1,19 +1,21 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import './../../assets/sass/word.scss';
+import png from './../../assets/images/test.png';
 
 @connect(
-	state => ({...state})
+	state => ({...state })
 )
 export default class Index extends Component {
+	static type = 'archives';
 	render() {
 		const {
 			value_set
 		} = this.props;
 		console.log(value_set);
-		return(
+		return (
 			<div className="word">
 				<p className="text"><Link to="/">This is Homepage.</Link></p>
 				<p className="text"><Link to="/set">go to set</Link></p>

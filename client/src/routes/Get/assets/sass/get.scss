@@ -1,3 +1,10 @@
 .word_0 {
 	color: green;
 }
+.transform {
+	display: flex;
+	transform: translateX(0);
+}
+.flex {
+	flex: 1;
+}

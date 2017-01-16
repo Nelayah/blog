@@ -1,7 +1,7 @@
 exports.ids = [1];
 exports.modules = {
 
-/***/ 104:
+/***/ 132:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12,29 +12,31 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _getPrototypeOf = __webpack_require__(46);
+var _getPrototypeOf = __webpack_require__(62);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(47);
+var _classCallCheck2 = __webpack_require__(63);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(48);
+var _createClass2 = __webpack_require__(64);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(50);
+var _possibleConstructorReturn2 = __webpack_require__(66);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(49);
+var _inherits2 = __webpack_require__(65);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _react = __webpack_require__(51);
+var _react = __webpack_require__(18);
 
-__webpack_require__(52);
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(67);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49,7 +51,7 @@ var Set = function (_Component) {
 	(0, _createClass3.default)(Set, [{
 		key: 'render',
 		value: function render() {
-			return React.createElement(
+			return _react2.default.createElement(
 				'div',
 				{ className: 'word' },
 				'This is a word.'

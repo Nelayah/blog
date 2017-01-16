@@ -5,8 +5,13 @@ import { Router, browserHistory } from 'react-router';
 
 import rootRoute from './routes/init';
 import reducers from './reducers/init';
+import png from './assets/images/test.png';
 
-let store = createStore(reducers);
+// Grab the state from a global variable injected into the server-generated HTML
+const preloadedState = window.__PRELOADED_STATE__;
+
+// Create Redux store with initial state
+const store = createStore(reducers, preloadedState)
 let rootElement = document.getElementById('root');
 
 render((

@@ -2,6 +2,10 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 import path from 'path';
 import webpack from 'webpack';
 import { RootMostResolvePlugin } from 'webpack-dependency-suite';
+import customProperties from "postcss-custom-properties";
+import autoprefixer from "autoprefixer";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import WebpackMd5Hash from 'webpack-md5-hash';
 
 const env = process.env.NODE_ENV;
 const plugins = env === "development" ? [] : [
@@ -30,8 +34,8 @@ module.exports = {
 		vendor: path.resolve('./src/vendor.jsx')
 	},
 	output: {
-		filename: "[name].bundle.js",
-		path: path.resolve('./dist')
+		filename: "[name].[chunkhash:8].bundle.js",
+		path: path.resolve(__dirname, 'dist')
 	},
 	module: {
 		rules: [{
@@ -46,18 +50,21 @@ module.exports = {
 				loader: 'css-loader'
 			})
 		}, {
-			test: /\.(png|jpg|gif|svg)$/,
-			loader: `url-loader?limit=5000&emitFile=true&name=/static/images/[hash:8].[ext]`
-		}, {
-			test: /\/opensans\/.*\.(woff|eot|woff2|ttf|svg)/,
-			loader: `file-loader?emitFile=false&name=${ path.resolve() }/font/opensans/[name].[ext]`
-		}, {
 			test: /\.scss$/,
 			exclude: /node_modules/,
 			loader: ExtractTextPlugin.extract({
 				fallbackLoader: 'style-loader',
-				loader: 'css-loader!sass-loader'
+				loader: [
+					{ loader: 'css-loader!sass-loader', query: { modules: true, sourceMaps: true } },
+					'postcss-loader'
+				]
 			})
+		}, {
+			test: /\.(png|jpg|gif|svg)$/,
+			loader: `file-loader?name=/static/images/[hash:8].[ext]`
+		}, {
+			test: /\/opensans\/.*\.(woff|eot|woff2|ttf|svg)/,
+			loader: `file-loader?emitFile=false&name=${ path.resolve() }/font/opensans/[name].[ext]`
 		}]
 	},
 	resolve: {
@@ -70,6 +77,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new WebpackMd5Hash(),
 		/*
 		 * 提取公用代码库或模块, code split
 		 */
@@ -83,15 +91,41 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			'React': 'react'
 		}),
-		new ExtractTextPlugin("./static/css/styles.css"),
+		new ExtractTextPlugin({ filename: "static/css/styles.[chunkhash:8].css", disable: false, allChunks: false }),
 		new webpack.LoaderOptionsPlugin({
 			minimize: env === "development" ? false : true,
-			debug: env === "development" ? true : false
+			debug: env === "development" ? true : false,
+			options: {
+				postcss: [ // <---- postcss configs go here under LoadOptionsPlugin({ options: { ??? } })
+						customProperties(),
+						autoprefixer({ browsers: ['last 10 versions', 'ie 6-8'] })
+					]
+					// ...other configs that used to directly on `modules.exports`
+			}
 		}),
 		...plugins,
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(env)
 		}),
-		new webpack.NoEmitOnErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin(),
+		new HtmlWebpackPlugin({
+			inject: false,
+			filename: 'template.html',
+			template: "./src/template.html",
+			files: {
+				"css": ["style.css"],
+				"js": ["index.js", "vendor.js"],
+				"chunks": {
+					"vendor": {
+						"entry": "vendor.js",
+						"css": []
+					},
+					"index": {
+						"entry": "index.js",
+						"css": ["style.css"]
+					}
+				}
+			},
+		})
 	]
 }

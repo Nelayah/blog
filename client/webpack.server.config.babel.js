@@ -38,6 +38,17 @@ module.exports = {
 				'css-loader',
 				'sass-loader'
 			]
+		}, {
+			test: /\.html$/,
+			exclude: /node_modules/,
+			loader: [
+				'html-loader'
+			]
+		}, {
+			test: /\.(png|jpg|gif|svg)$/,
+			loader: [
+				'url-loader'
+			]
 		}]
 	},
 
