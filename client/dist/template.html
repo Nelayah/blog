@@ -3,16 +3,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Document</title>
-		<link rel="stylesheet" href="static/css/styles.e39e229c.css">
-		<script type="text/javascript" src="vendor.5d1e404b.bundle.js"></script>
+		<link rel="stylesheet" href="static/css/styles.32c6ca8d.css">
+		<script type="text/javascript" src="/static/js/vendor.5d1e404b.bundle.js"></script>
 	</head>
 	<body>
-		<div id="root">${content}</div>
+		<div id="root"><?- content ?></div>
 		<script>
 			// WARNING: See the following for Security isues with this approach:
 			// http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-			window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)} 
+			window.__PRELOADED_STATE__ = <?- JSON.stringify(preloadedState) ?> 
 		</script>
-		<script type="text/javascript" src="index.e39e229c.bundle.js"></script>
+		<script type="text/javascript" src="/static/js/index.32c6ca8d.bundle.js"></script>
 	</body>
 </html>

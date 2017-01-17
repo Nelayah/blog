@@ -34,7 +34,7 @@ module.exports = {
 		vendor: path.resolve('./src/vendor.jsx')
 	},
 	output: {
-		filename: "[name].[chunkhash:8].bundle.js",
+		filename: "/static/js/[name].[chunkhash:8].bundle.js",
 		path: path.resolve(__dirname, 'dist')
 	},
 	module: {
@@ -112,6 +112,7 @@ module.exports = {
 			inject: false,
 			filename: 'template.html',
 			template: "./src/template.html",
+			favicon: './src/assets/images/favicon.ico',
 			files: {
 				"css": ["style.css"],
 				"js": ["index.js", "vendor.js"],

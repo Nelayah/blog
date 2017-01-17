@@ -1,4 +1,5 @@
 import express from 'express';
+import ejs from 'ejs'
 import path from 'path';
 import React from 'react';
 import { match, RouterContext } from 'react-router';
@@ -13,16 +14,13 @@ import template from './../../dist/template.html';
 const port = 4444;
 const app = express();
 const publicPath = path.join(__dirname, './../../dist');
+
+ejs.delimiter = '?';
+//注册ejs模板为html页。简单的讲，就是原来以.ejs为后缀的模板页，现在的后缀名可以//是.html了
+app.engine('.html', ejs.__express);
+//设置视图模板的默认后缀名为.html,避免了每次res.Render("xx.html")的尴尬
+app.set('view engine', 'html');
 app.use(express.static(publicPath));
-
-function renderPage(content, preloadedState) {
-	function tag(strings, ...values) {
-		console.log(strings.raw[0]);
-		// "string text line 1 \\n string text line 2"
-	}
-	return String.raw`${template}`;
-}
-
 
 function render(req, res, renderProps) {
 	/*	const frontUrl = renderProps.location.pathname;
@@ -30,13 +28,14 @@ function render(req, res, renderProps) {
 	// const { type } = renderProps.components[1].content;
 	// console.log(renderProps);
 	const store = createStore(reducers);
-	const appHtml = renderToString(
+	const content = renderToString(
 		<Provider store={store}>
 			<RouterContext {...renderProps} />
 		</Provider>
 	)
 	const preloadedState = store.getState();
-	res.send(renderPage(appHtml, preloadedState));
+	const page = ejs.render(template, {content, preloadedState});
+	res.send(page);
 }
 
 app.get('*', (req, res) => {

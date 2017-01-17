@@ -10,11 +10,16 @@ import png from './../../assets/images/test.png';
 )
 export default class Index extends Component {
 	static type = 'archives';
+	componentWillMount() {
+		console.log("ok");
+	}
+	componentDidMount() {
+		console.log("end!!")
+	}
 	render() {
 		const {
 			value_set
 		} = this.props;
-		console.log(value_set);
 		return (
 			<div className="word">
 				<p className="text"><Link to="/">This is Homepage.</Link></p>
