@@ -9,7 +9,11 @@ import png from './../../assets/images/test.png';
 	state => ({...state })
 )
 export default class Index extends Component {
-	static type = 'archives';
+	static fetchData() {
+		return Promise.all([
+			dispatch(asyncAction)
+		]);
+	}
 	componentWillMount() {
 		console.log("ok");
 	}
@@ -22,7 +26,7 @@ export default class Index extends Component {
 		} = this.props;
 		return (
 			<div className="word">
-				<p className="text"><Link to="/">This is Homepage.</Link></p>
+				<p className="text"><Link to="/">This is Homepage.HAHAHAHAHAHAHAHAHAHAH</Link></p>
 				<p className="text"><Link to="/set">go to set</Link></p>
 				<p className="text"><Link to="/get">go to get</Link></p>
 				{this.props.children}

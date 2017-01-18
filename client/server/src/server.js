@@ -14,7 +14,6 @@ import template from './../../dist/template.html';
 const port = 4444;
 const app = express();
 const publicPath = path.join(__dirname, './../../dist');
-
 ejs.delimiter = '?';
 //注册ejs模板为html页。简单的讲，就是原来以.ejs为后缀的模板页，现在的后缀名可以//是.html了
 app.engine('.html', ejs.__express);
@@ -34,7 +33,7 @@ function render(req, res, renderProps) {
 		</Provider>
 	)
 	const preloadedState = store.getState();
-	const page = ejs.render(template, {content, preloadedState});
+	const page = ejs.render(template, { content, preloadedState });
 	res.send(page);
 }
 
@@ -47,6 +46,7 @@ app.get('*', (req, res) => {
 			return res.redirect(302, `${redirectLocation.pathname}${redirectLocation.search}`);
 		}*/
 		if (renderProps) {
+			console.log(renderProps.components[0].fetchData);
 			return render(req, res, renderProps);
 		}
 		/*return res.status(404).sendFile(config.error404File);*/

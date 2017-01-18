@@ -12,6 +12,7 @@
 			// WARNING: See the following for Security isues with this approach:
 			// http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
 			window.__PRELOADED_STATE__ = <%= "<?- JSON.stringify(preloadedState) ?>" %> 
+			console.log("<%=htmlWebpackPlugin.title %>");
 		</script>
 		<script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['index'].entry %>"></script>
 	</body>

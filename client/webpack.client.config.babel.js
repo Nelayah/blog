@@ -34,8 +34,9 @@ module.exports = {
 		vendor: path.resolve('./src/vendor.jsx')
 	},
 	output: {
-		filename: "/static/js/[name].[chunkhash:8].bundle.js",
-		path: path.resolve(__dirname, 'dist')
+		filename: "static/js/[name].[chunkhash:8].bundle.js",
+		path: path.resolve(__dirname, 'dist'),
+		publicPath: "/"
 	},
 	module: {
 		rules: [{
@@ -61,7 +62,7 @@ module.exports = {
 			})
 		}, {
 			test: /\.(png|jpg|gif|svg)$/,
-			loader: `file-loader?name=/static/images/[hash:8].[ext]`
+			loader: `file-loader?name=static/images/[hash:8].[ext]`
 		}, {
 			test: /\/opensans\/.*\.(woff|eot|woff2|ttf|svg)/,
 			loader: `file-loader?emitFile=false&name=${ path.resolve() }/font/opensans/[name].[ext]`
@@ -110,7 +111,9 @@ module.exports = {
 		new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
 			inject: false,
-			filename: 'template.html',
+			title: env,
+			env: env,
+			filename: env === "development" ? 'index.html' : 'template.html',
 			template: "./src/template.html",
 			favicon: './src/assets/images/favicon.ico',
 			files: {

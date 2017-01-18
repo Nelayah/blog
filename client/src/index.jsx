@@ -13,7 +13,6 @@ const preloadedState = window.__PRELOADED_STATE__;
 // Create Redux store with initial state
 const store = createStore(reducers, preloadedState)
 let rootElement = document.getElementById('root');
-
 render((
 	<Provider store={ store }>
 		<Router
