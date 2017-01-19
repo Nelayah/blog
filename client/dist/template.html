@@ -7,12 +7,18 @@
 		<script type="text/javascript" src="/static/js/vendor.5d1e404b.bundle.js"></script>
 	</head>
 	<body>
-		<div id="root"><?- content ?></div>
+		<div id="root">
+		
+			<?- content ?>
+			
+		</div>
 		<script>
 			// WARNING: See the following for Security isues with this approach:
 			// http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-			window.__PRELOADED_STATE__ = <?- JSON.stringify(preloadedState) ?> 
-
+		
+			window.__PRELOADED_STATE__ = <?- JSON.stringify(preloadedState) ?>
+		
+			console.log("production");
 		</script>
 		<script type="text/javascript" src="/static/js/index.b2d98630.bundle.js"></script>
 	</body>

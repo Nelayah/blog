@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Document</title>
-		<link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks['index'].css %>">
-		<script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['vendor'].entry %>"></script>
-	</head>
-	<body>
-		<div id="root"><%= "<?- content ?>" %></div>
-		<script>
-			// WARNING: See the following for Security isues with this approach:
-			// http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-			window.__PRELOADED_STATE__ = <%= "<?- JSON.stringify(preloadedState) ?>" %> 
-			console.log("<%=htmlWebpackPlugin.title %>");
-		</script>
-		<script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['index'].entry %>"></script>
-	</body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks['index'].css %>">
+	<script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['vendor'].entry %>"></script>
+</head>
+
+<body>
+	<div id="root">
+			<%= "<?- content ?>" %>
+	</div>
+	<script>
+		// WARNING: See the following for Security isues with this approach:
+		// http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+		<%if (htmlWebpackPlugin.options.env === "production") { %>
+		window.__PRELOADED_STATE__ = <%= "<?- JSON.stringify(preloadedState) ?>" %>
+		<% } %>
+		console.log("<%= htmlWebpackPlugin.options.env %>");
+	</script>
+	<script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks['index'].entry %>"></script>
+</body>
+
 </html>

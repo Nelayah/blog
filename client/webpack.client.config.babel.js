@@ -111,7 +111,6 @@ module.exports = {
 		new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
 			inject: false,
-			title: env,
 			env: env,
 			filename: env === "development" ? 'index.html' : 'template.html',
 			template: "./src/template.html",
