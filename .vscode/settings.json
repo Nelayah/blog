@@ -3,5 +3,6 @@
     "files.associations": {
         "*.html": "ejs"
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.fontFamily": "'Microsoft Yahei', 'Open sans"
 }
