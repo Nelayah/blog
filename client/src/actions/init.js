@@ -1,11 +1,14 @@
 export default {
 	get: {
-		head: "HEAD",
-		tail: "TAIL"
+		head: 'HEAD',
+		tail: 'TAIL'
 	},
 	set: {
-		letter_a: "A",
-		letter_b: "B",
-		letter_c: "C"
+		letter_a: 'A',
+		letter_b: 'B',
+		letter_c: 'C'
+	},
+	sidebar: {
+		toggle: 'TOGGLE'
 	}
-}
+};

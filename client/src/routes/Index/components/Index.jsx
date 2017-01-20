@@ -1,29 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import Helmet from 'react-helmet';
 
-import './../../assets/sass/word.scss';
+import Sidebar from './Sidebar.jsx';
 
 @connect(state => ({
 		...state
 }))
 export default class Index extends Component {
 		static fetchData() {
-				return Promise.all([
-						this
-								.props
-								.dispatch(asyncAction)
-				]);
+				// ajax
+				console.log('type');
 		}
-		componentWillMount() {
-				console.log("ok");
-		}
-		componentDidMount() {
-				console.log("end!!")
+		handleToggle() {
+			const {dispatch} = this.props;
+			dispatch({type, })
 		}
 		render() {
-				const {value_set} = this.props;
 				return (
 						<div className="word">
 								<Helmet
@@ -39,17 +32,9 @@ export default class Index extends Component {
 												content: 'article'
 										}
 								]}/>
-								<p className="text">
-										<Link to="/">This is Homepage.HAHAHAHAHAHAHAHAHAHAH</Link>
-								</p>
-								<p className="text">
-										<Link to="/set">go to set</Link>
-								</p>
-								<p className="text">
-										<Link to="/get">go to get</Link>
-								</p>
-								{this.props.children}
+								<RaisedButton label="Toggle Drawer" onTouchTap={this.handleToggle}/>
+								<Sidebar/>
 						</div>
-				)
+				);
 		}
 }
