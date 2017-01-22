@@ -2,10 +2,15 @@ import React, {Component} from 'react';
 import Drawer from 'material-ui/Drawer';
 import avatar from './../assets/avatar.jpg';
 
+@connect(state => ({
+		...state
+}))
 export default class Sidebar extends Component {
+
 		render() {
+				const toggle = this.props.sidebar.get('toggle');
 				return (
-						<Drawer open={this.state.open}>
+						<Drawer open={toggle}>
 								<div className="sidebar-wrap">
 										<div className="sidebar-container">
 												<div className="avatar">

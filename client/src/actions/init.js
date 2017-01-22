@@ -1,14 +1,7 @@
-export default {
-	get: {
-		head: 'HEAD',
-		tail: 'TAIL'
-	},
-	set: {
-		letter_a: 'A',
-		letter_b: 'B',
-		letter_c: 'C'
-	},
-	sidebar: {
-		toggle: 'TOGGLE'
-	}
-};
+import Immutable from 'immutable';
+
+export default Immutable.fromJS({
+		sidebar: {
+				toggle: 'TOGGLE'
+		}
+});

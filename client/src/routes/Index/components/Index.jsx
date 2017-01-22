@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
+import actions from './../../../actions/init.js';
 
 import Sidebar from './Sidebar.jsx';
 
@@ -14,7 +15,7 @@ export default class Index extends Component {
 		}
 		handleToggle() {
 			const {dispatch} = this.props;
-			dispatch({type, })
+			dispatch({type: actions.getIn(['sidebar', 'toggle'])});
 		}
 		render() {
 				return (
