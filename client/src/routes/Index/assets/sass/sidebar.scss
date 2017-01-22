@@ -1,0 +1,58 @@
+@import "base.scss";
+.sidebar-wrap {
+	height: 100%;
+	background: $primary-color-dark;
+}
+.sidebar-toggle {
+	position: fixed;
+	bottom: 5px;
+	z-index: 1400;
+	width: 15px;
+	height: 18px;
+	padding: 5px;
+	background: $accent-color;
+	line-height: 0;
+	cursor: pointer;
+	transition: all .4s;
+	.sidebar-toggle-line {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		height: 2px;
+		width: 100%;
+		background: #fff;
+		margin-top: 3px;
+		transition: all .3s;
+		opacity: 1;
+	}
+}
+.sidebar-toggle[data-status="none"] {
+	right: 265px;
+
+	&:hover {
+		.sidebar-toggle-line:first-child {
+			width: 50%;
+			top: 2px;
+			transform: rotateZ(-45deg);
+		}
+		.sidebar-toggle-line:last-child {
+			width: 50%;
+			top: -2px;
+			transform: rotateZ(45deg);
+		}
+	}
+}
+.sidebar-toggle[data-status="active"] {
+	right: 265px;
+	.sidebar-toggle-line:first-child {
+		top: 5px;
+		transform: rotateZ(-45deg);
+	}
+	.sidebar-toggle-line:nth-child(2) {
+		opacity: 0;
+	}
+	.sidebar-toggle-line:last-child {
+		top: -5px;
+		transform: rotateZ(45deg);
+	}
+}
