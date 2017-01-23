@@ -2,24 +2,25 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 		<title>Document</title>
-		<link rel="stylesheet" href="/static/css/styles.b2d98630.css">
-		<script type="text/javascript" src="/static/js/vendor.5d1e404b.bundle.js"></script>
+		<link rel="stylesheet" href="/static/css/styles.535ce637.css">
+		<script type="text/javascript" src="/static/js/vendor.96851f0b.bundle.js"></script>
+		<script type="text/javascript" src="/static/js/ui.195dc221.bundle.js"></script>
 	</head>
 	<body>
 		<div id="root">
-		
 			<?- content ?>
-			
 		</div>
 		<script>
 			// WARNING: See the following for Security isues with this approach:
 			// http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
 		
-			window.__PRELOADED_STATE__ = <?- JSON.stringify(preloadedState) ?>
+		window.__PRELOADED_STATE__ = <?- JSON.stringify(preloadedState) ?>
 		
-			console.log("production");
+		console.log("production");
 		</script>
-		<script type="text/javascript" src="/static/js/index.b2d98630.bundle.js"></script>
+		<script type="text/javascript" src="/static/js/index.535ce637.bundle.js"></script>
 	</body>
 </html>

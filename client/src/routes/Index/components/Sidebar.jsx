@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Drawer from 'material-ui/Drawer';
+import Avatar from 'material-ui/Avatar';
+import RaisedButton from 'material-ui/RaisedButton';
 
+import config from './../../../config.js';
 import actions from './../../../actions/init.js';
-import avatar from './../assets/avatar.jpg';
 import './../assets/sass/sidebar.scss';
 
 @connect(state => ({
@@ -19,23 +21,45 @@ export default class Sidebar extends Component {
 		dispatch({ type: actions.getIn(['sidebar', 'toggle']) });
 	}
 	render() {
+		const { dispatch } = this.props;
 		const toggle = this.props.sidebar.get('toggle');
+		const {
+			name,
+			motto,
+			introduce_zh,
+			introduce_en,
+			summary,
+			contact
+		} = config.getIn(['profile']).toJS();
 		return (
 			<div>
-				<Drawer openSecondary={true} open={toggle} width={320}>
-					<div className="sidebar-wrap">
+				<Drawer 
+					openSecondary={ true } 
+					open={ toggle } 
+					width={ 320 } 
+					docked={ false } 
+					onRequestChange={ () => dispatch({ type: actions.getIn(['sidebar', 'toggle']) }) }
+				>
+					<div className="sidebar-wrap" data-status = {toggle ? 'active' : 'none'}>
 						<div className="sidebar-container">
-							<div className="avatar">
-								<img src={avatar} alt="Hayalen"/>
-								<p className="name">Hayalen</p>
-								<p className="word">Not Fucking Excuse, Just Do It!</p>
+							<div className="avatar-wrap">
+								<Avatar className="avatar" size={128}>H</Avatar>
+								<p className="name">{ name }</p>
+								<p className="word">{ motto }</p>
 							</div>
-							<p className="summary">This is a testing...</p>
+
+							<p className="introduce-zh">{ introduce_zh }</p>
+							<p className="introduce-en">{ introduce_en }</p>
+							<p className="summary">{ summary }</p>
 							<div className="contact">
-									<p className="email">Email: hayalenelayah@outlook.com</p>
-									<p className="github">
-										<a href="https://github.com/Nelayah" alt="Hayalen's Github">Github</a>
-									</p>
+									<p className="email"><i className="material-icons">email</i> : { contact.email }</p>
+									<RaisedButton 
+										className="btn-github"
+										href={ contact.github }
+										target="_blank"
+										label="GitHub Link"
+										secondary={true}
+									/>
 							</div>
 						</div>
 					</div>
