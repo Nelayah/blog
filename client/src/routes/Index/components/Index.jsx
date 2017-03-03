@@ -8,14 +8,20 @@ import actions from './../../../actions/init.js';
 import Sidebar from './Sidebar.jsx';
 import Navigation from './Navigation.jsx';
 import muiTheme from './../consts/muiTheme.js';
+import ajax from './../../../lib/ajax';
+import config from './../../../config';
 import './../assets/sass/index.scss';
+
+const {
+	blogList
+} = config.getIn(['address']).toJS();
 
 injectTapEventPlugin();
 
 @connect(state => ({
-	...state
-}))
-// @muiThemeable() enable setting
+		...state
+	}))
+	// @muiThemeable() enable setting
 export default class Index extends Component {
 	constructor(props) {
 		super(props);
@@ -23,11 +29,18 @@ export default class Index extends Component {
 	}
 	static fetchData() {
 		// ajax
-		console.log('type');
+		const currentIndex = this.props.pages.get('currentIndex');
+		ajax.get(blogList + currentIndex)
+			.then((resolve) => {
+				console.log(resolve.text);
+			});
 	}
 	handleToggle() {
 		const { dispatch } = this.props;
 		dispatch({ type: actions.getIn(['sidebar', 'toggle']) });
+	}
+	componentDidMount() {
+		console.log(this);
 	}
 	render() {
 		return (

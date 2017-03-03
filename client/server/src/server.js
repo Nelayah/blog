@@ -1,9 +1,9 @@
 import express from 'express';
-import ejs from 'ejs'
+import ejs from 'ejs';
 import path from 'path';
 import React from 'react';
 import { match, RouterContext } from 'react-router';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 
@@ -31,7 +31,7 @@ function render(req, res, renderProps) {
 		<Provider store={store}>
 			<RouterContext {...renderProps} />
 		</Provider>
-	)
+	);
 	const preloadedState = store.getState();
 	const page = ejs.render(template, { content, preloadedState });
 	res.send(page);
@@ -49,6 +49,7 @@ app.get('*', (req, res) => {
 			console.log(renderProps.components[0].fetchData);
 			return render(req, res, renderProps);
 		}
+		return false;
 		/*return res.status(404).sendFile(config.error404File);*/
 	});
 });

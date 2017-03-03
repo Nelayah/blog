@@ -27,7 +27,13 @@ module.exports = {
 		contentBase: path.join(__dirname, 'dist'),
 		compress: true,
 		port: 9000,
-		historyApiFallback: true
+		historyApiFallback: true,
+		proxy: {
+			'/article/': {
+				target: 'http://localhost:5000',
+				secure: false
+			}
+		}
 	},
 	entry: {
 		index: path.resolve('./src/index.jsx'),

@@ -46,44 +46,6 @@
 			margin-top: 20px;
 		}
 	}
-	@mixin transitions($delay) {
-		transition: opacity .4s ease $delay, transform .4s ease $delay;
-	}
-	.introduce-zh {
-		@include transitions(.25s);
-	}
-	.introduce-en {
-		@include transitions(.3s);
-	}
-	.summary {
-		@include transitions(.35s);
-	}
-	.contact .email {
-		@include transitions(.4s);
-	}
-	.contact .btn-github {
-		@include transitions(.45s);
-	}
-	.introduce-zh,
-	.introduce-en,
-	.summary,
-	.contact .email,
-	.contact .btn-github {
-		transform: translateY(-30px);
-
-		opacity: 0;
-	}
-}
-.sidebar-wrap[data-status='active'] {
-	.introduce-zh,
-	.introduce-en,
-	.summary,
-	.contact .email,
-	.contact .btn-github {
-		transform: translateY(0);
-
-		opacity: 1;
-	}
 }
 .sidebar-toggle {
 	line-height: 0;

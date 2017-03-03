@@ -8,6 +8,15 @@ import config from './../../../config.js';
 import actions from './../../../actions/init.js';
 import './../assets/sass/sidebar.scss';
 
+const {
+	name,
+	motto,
+	introduce_zh,
+	introduce_en,
+	summary,
+	contact
+} = config.getIn(['profile']).toJS();
+
 @connect(state => ({
 	...state
 }))
@@ -23,14 +32,6 @@ export default class Sidebar extends Component {
 	render() {
 		const { dispatch } = this.props;
 		const toggle = this.props.sidebar.get('toggle');
-		const {
-			name,
-			motto,
-			introduce_zh,
-			introduce_en,
-			summary,
-			contact
-		} = config.getIn(['profile']).toJS();
 		return (
 			<div>
 				<Drawer 

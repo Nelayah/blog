@@ -10,7 +10,14 @@ const config = Immutable.fromJS({
 		'contact': {
 			'email': 'hayalenelayah@outlook.com',
 			'github': 'https://github.com/Nelayah'
+		},
+		'quotes': {
+			title: 'KNOWLEDGE',
+			description: 'Knowledge comes, but wisdom lingers.'
 		}
+	},
+	'address': {
+		'blogList': '/articles/?page='
 	}
 });
 
