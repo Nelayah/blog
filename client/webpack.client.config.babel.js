@@ -105,7 +105,10 @@ module.exports = {
 			'getMuiTheme': 'material-ui/styles/getMuiTheme',
 			'RaisedButton': 'material-ui/RaisedButton',
 			'Drawer': 'material-ui/Drawer',
-			'Avatar': 'material-ui/Avatar'
+			'Avatar': 'material-ui/Avatar',
+			'Tabs': 'material-ui/Tabs',
+			'Card': 'material-ui/Card',
+			'Chip': 'material-ui/Chip'
 		}),
 		new ExtractTextPlugin({ filename: 'static/css/styles.[chunkhash:8].css', disable: false, allChunks: false }),
 		new webpack.LoaderOptionsPlugin({

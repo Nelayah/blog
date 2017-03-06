@@ -35,16 +35,15 @@ export default class Sidebar extends Component {
 		return (
 			<div>
 				<Drawer 
-					openSecondary={ true } 
 					open={ toggle } 
-					width={ 320 } 
+					width={ 280 } 
 					docked={ false } 
 					onRequestChange={ () => dispatch({ type: actions.getIn(['sidebar', 'toggle']) }) }
 				>
 					<div className="sidebar-wrap" data-status = {toggle ? 'active' : 'none'}>
 						<div className="sidebar-container">
 							<div className="avatar-wrap">
-								<Avatar className="avatar" size={128}>H</Avatar>
+								<Avatar className="avatar" size={ 54 }>H</Avatar>
 								<p className="name">{ name }</p>
 								<p className="word">{ motto }</p>
 							</div>

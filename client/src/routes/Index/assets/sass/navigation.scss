@@ -103,8 +103,17 @@
 .tabs-wrap {
 	border-bottom: 1px solid $divider-color;
 	background: $primary-color;
+	box-shadow: rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px;
 	.tabs-container {
 		width: 1000px;
 		margin: 0 auto;
 	}
+}
+.tabs-wrap[data-fixed='on'] {
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+
+	width: 100%;
 }

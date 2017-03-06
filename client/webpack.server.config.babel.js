@@ -1,5 +1,5 @@
-var fs = require('fs')
-var path = require('path')
+var fs = require('fs');
+var path = require('path');
 
 module.exports = {
 
@@ -15,10 +15,10 @@ module.exports = {
 
 	// keep node_module paths out of the bundle
 	externals: fs.readdirSync(path.resolve(__dirname, 'node_modules')).concat([
-		'react-dom/server', 'react/addons',
+		'react-dom/server', 'react/addons'
 	]).reduce(function(ext, mod) {
-		ext[mod] = 'commonjs ' + mod
-		return ext
+		ext[mod] = 'commonjs ' + mod;
+		return ext;
 	}, {}),
 
 	node: {
@@ -50,6 +50,6 @@ module.exports = {
 				'url-loader'
 			]
 		}]
-	},
+	}
 
-}
+};

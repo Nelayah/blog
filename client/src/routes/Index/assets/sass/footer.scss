@@ -1,0 +1,32 @@
+@import 'base.scss';
+
+.footer-wrap {
+	padding-top: 28px;
+	.footer-container {
+		background: white;
+		.footer-blocks {
+			position: relative;
+
+			width: 1200px;
+			margin: 0 auto;
+			.backTop {
+				position: absolute;
+				top: -28px;
+				right: 0;
+				.material-icons {
+					font-size: 30px;
+				}
+			}
+			p.text {
+				font-size: 14px;
+				line-height: 120px;
+
+				height: 120px;
+
+				text-align: center;
+
+				color: $primary-text-color;
+			}
+		}
+	}
+}
