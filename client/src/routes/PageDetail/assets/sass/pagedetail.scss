@@ -1,0 +1,21 @@
+.PageDetail-wrap {
+	.PageDetail-label {
+		display: flex;
+
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+.pageFadeIn {
+	animation: pageFadeIn .8s ease-in;
+
+	opacity: 1;
+}
+@keyframes pageFadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

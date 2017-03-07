@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import throttle from 'lodash/throttle';
-
 import './../assets/sass/navigation.scss';
 import config from './../../../config.js';
 import logo from './../assets/images/logo.png';
@@ -10,6 +9,10 @@ const {
 	quotes
 } = config.getIn(['profile']).toJS();
 
+const {
+	taps
+} = config.getIn(['url']).toJS();
+
 const tabStyle = {
 	height: '64px'
 };
@@ -17,29 +20,28 @@ const tabStyle = {
 export default class Navigation extends Component {
 	constructor(props) {
 		super(props);
+		let value;
+		for (let x in taps) {
+			if ( x !== 'article' && location.pathname.indexOf(taps[x]) !== -1) {
+				value = taps[x];
+				break;
+			}
+		}
+		if (!value) {
+			value = taps.article;
+		}
 		this.state = {
-			isFixed: false
+			value: value
 		};
-		this.handleFix = this.handleFix.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
-	handleFix() {
-		if (window.pageYOffset > 300 && !this.state.isFixed) {
-			this.setState({
-				isFixed: true
-			});
-			return;
-		}
-		if (window.pageYOffset < 300 && this.state.isFixed) {
-			this.setState({
-				isFixed: false
-			});
-			return;
-		}
-	}
-	componentDidMount() {
-		window.addEventListener('scroll', throttle(this.handleFix, 100));
+	handleChange(value) {
+		this.setState({
+			value: value
+		});
 	}
 	render() {
+
 		return (
 			<div className="nav-wrap">
 				<div className="nav-container">
@@ -64,27 +66,51 @@ export default class Navigation extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="tabs-wrap" data-fixed = {this.state.isFixed ? 'on' : 'off'}>
-						<Tabs className="tabs-container">
+					<div className="tabs-wrap">
+						<Tabs className="tabs-container" value = { this.state.value } onChange={this.handleChange}>
 							<Tab 
 								icon={<i className="material-icons">home</i>}
 								label="Article"
 								style = { tabStyle }
+								onActive = { 
+									() => {
+										browserHistory.push(taps.article);
+									}
+								}
+								value = { taps.article }
 							/>
 							<Tab 
 								icon={<i className="material-icons">code</i>}
 								label="Project"
 								style = { tabStyle }
+								onActive = { 
+									() => {
+										browserHistory.push(taps.project);
+									}
+								}
+								value = { taps.project }
 							/>
 							<Tab 
 								icon={<i className="material-icons">access_time</i>}
 								label="Dairy"
 								style = { tabStyle }
+								onActive = { 
+									() => {
+										browserHistory.push(taps.dairy);
+									}
+								}
+								value = { taps.dairy }
 							/>
 							<Tab 
 								icon={<i className="material-icons">perm_contact_calendar</i>}
 								label="About"
 								style = { tabStyle }
+								onActive = { 
+									() => {
+										browserHistory.push(taps.about);
+									}
+								}
+								value = { taps.about }
 							/>
 						</Tabs>
 					</div>

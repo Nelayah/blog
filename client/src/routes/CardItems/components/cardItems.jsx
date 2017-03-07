@@ -19,9 +19,20 @@ const style = {
 
 let test = [1, 2, 3, 4, 5];
 export default class CardItems extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			fadeIn: false
+		};
+	}
+	componentDidMount() {
+		this.setState({
+			fadeIn: true
+		});
+	}
 	render() {
 		return (
-			<div>
+			<div className={ this.state.fadeIn ? 'cardFadeIn' : ''}>
 				<Link to="/blog/20170307">
 					{ test.map((element)=> 
 						<div className="card-wrap" key={ element }>

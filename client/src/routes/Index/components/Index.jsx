@@ -9,7 +9,7 @@ import actions from './../../../actions/init.js';
 import Sidebar from './Sidebar.jsx';
 import Navigation from './Navigation.jsx';
 import Footer from './Footer.jsx';
-import CardItems from './CardItems.jsx';
+import ArticleList from './ArticleList.jsx';
 import muiTheme from './../consts/muiTheme.js';
 import ajax from './../../../lib/ajax';
 import config from './../../../config';
@@ -68,24 +68,26 @@ export default class Index extends Component {
 					]}/>
 					<Navigation />
 					<Sidebar/>
-					<div className="blog-container">
-						<div className="blogContent">
-							<CardItems />
-						</div>
-						<div className="paginations">
-							<RaisedButton 
-								className="btn-previous"
-								label="PREVIOUS"
-								secondary={true}
-							/>
-							<div className="pages">1</div>
-							<RaisedButton 
-								className="btn-next"
-								label="NEXT"
-								secondary={true}
-							/>
-						</div>
-					</div>
+					{ this.props.children ||  
+						<div className="blog-container">
+							<div className="blogContent">
+								<ArticleList />
+							</div>
+							<div className="paginations">
+								<RaisedButton 
+									className="btn-previous"
+									label="PREVIOUS"
+									secondary={true}
+								/>
+								<div className="pages">1</div>
+								<RaisedButton 
+									className="btn-next"
+									label="NEXT"
+									secondary={true}
+								/>
+							</div>
+						</div> 
+					}
 					<Footer />
 				</div>
 			</MuiThemeProvider>

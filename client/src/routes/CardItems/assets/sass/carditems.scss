@@ -1,0 +1,24 @@
+.card-wrap {
+	width: 1000px;
+	margin: 20px auto 0 auto;
+
+	cursor: pointer;
+	.card-label {
+		display: flex;
+
+		flex: flex-wrap;
+	}
+}
+.cardFadeIn {
+	animation: cardFadeIn .8s ease-in;
+
+	opacity: 1;
+}
+@keyframes cardFadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

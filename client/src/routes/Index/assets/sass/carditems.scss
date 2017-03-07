@@ -2,5 +2,9 @@
 	margin-top: 20px;
 
 	cursor: pointer;
-}
+	.card-label {
+		display: flex;
 
+		flex: flex-wrap;
+	}
+}

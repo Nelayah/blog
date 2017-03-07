@@ -18,6 +18,14 @@ const config = Immutable.fromJS({
 	},
 	'address': {
 		'blogList': '/articles/?page='
+	},
+	'url': {
+		'taps': {
+			'article': '/',
+			'project': '/project/',
+			'dairy': '/dairy/',
+			'about': '/about/'
+		}
 	}
 });
 
