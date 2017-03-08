@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import './../assets/sass/navigation.scss';
@@ -17,31 +18,26 @@ const tabStyle = {
 	height: '64px'
 };
 
+@connect(state => ({
+		...state
+	}))
 export default class Navigation extends Component {
 	constructor(props) {
 		super(props);
-		let value;
-		for (let x in taps) {
-			if ( x !== 'article' && location.pathname.indexOf(taps[x]) !== -1) {
-				value = taps[x];
-				break;
-			}
-		}
-		if (!value) {
-			value = taps.article;
-		}
+		console.log('ok2');
+		console.log(this.props.pages);
+		let value = this.props.pages.getIn(['tapsHighlight']);
 		this.state = {
-			value: value
+			value
 		};
 		this.handleChange = this.handleChange.bind(this);
 	}
 	handleChange(value) {
 		this.setState({
-			value: value
+			value
 		});
 	}
 	render() {
-
 		return (
 			<div className="nav-wrap">
 				<div className="nav-container">

@@ -5,6 +5,7 @@ export default Immutable.fromJS({
 		toggle: 'TOGGLE'
 	},
 	pages: {
-		currentIndex: 'CURRENTINDEX'
+		currentIndex: 'CURRENTINDEX',
+		taps: 'TAPS'
 	}
 });

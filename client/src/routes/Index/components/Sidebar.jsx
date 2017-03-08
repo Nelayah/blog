@@ -31,6 +31,7 @@ export default class Sidebar extends Component {
 	}
 	render() {
 		const { dispatch } = this.props;
+		console.log(this.props.sidebar);
 		const toggle = this.props.sidebar.get('toggle');
 		return (
 			<div>

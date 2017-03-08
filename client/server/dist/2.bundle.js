@@ -1,7 +1,7 @@
-exports.ids = [1];
+exports.ids = [2];
 exports.modules = {
 
-/***/ 237:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42,25 +42,25 @@ var _pagedetail2 = _interopRequireDefault(_pagedetail);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Blog = function (_PageDetail) {
-	(0, _inherits3.default)(Blog, _PageDetail);
+var Project = function (_PageDetail) {
+	(0, _inherits3.default)(Project, _PageDetail);
 
-	function Blog() {
-		(0, _classCallCheck3.default)(this, Blog);
-		return (0, _possibleConstructorReturn3.default)(this, (Blog.__proto__ || (0, _getPrototypeOf2.default)(Blog)).apply(this, arguments));
+	function Project() {
+		(0, _classCallCheck3.default)(this, Project);
+		return (0, _possibleConstructorReturn3.default)(this, (Project.__proto__ || (0, _getPrototypeOf2.default)(Project)).apply(this, arguments));
 	}
 
-	(0, _createClass3.default)(Blog, [{
+	(0, _createClass3.default)(Project, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			(0, _get3.default)(Blog.prototype.__proto__ || (0, _getPrototypeOf2.default)(Blog.prototype), 'componentDidMount', this).call(this);
-			console.log(this.props.params.blogId);
+			(0, _get3.default)(Project.prototype.__proto__ || (0, _getPrototypeOf2.default)(Project.prototype), 'componentDidMount', this).call(this);
+			console.log('Here is about!!');
 		}
 	}]);
-	return Blog;
+	return Project;
 }(_pagedetail2.default);
 
-exports.default = Blog;
+exports.default = Project;
 
 /***/ }),
 

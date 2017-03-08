@@ -49,6 +49,11 @@ module.exports = {
 			loader: [
 				'url-loader'
 			]
+		}, {
+			test: /\.(woff|eot|woff2|ttf|svg)/,
+			loader: [
+				'url-loader'
+			]
 		}]
 	}
 
