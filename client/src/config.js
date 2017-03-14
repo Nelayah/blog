@@ -1,5 +1,14 @@
 import Immutable from 'immutable';
 
+const base = {
+	'articles': 'articles',
+	'articleList': 'articleList',
+	'dairy': 'dairy',
+	'dairyList': 'dairyList',
+	'project': 'project',
+	'about': 'about'
+};
+
 const config = Immutable.fromJS({
 	'profile': {
 		'name': 'Hayalen',
@@ -16,15 +25,21 @@ const config = Immutable.fromJS({
 			description: 'Knowledge comes, but wisdom lingers.'
 		}
 	},
-	'address': {
-		'blogList': '/articles/?page='
-	},
 	'url': {
+		base,
+		routes: {
+			'articles': `${base.articles}/:id`,
+			'articleList': `${base.articleList}/:id`,
+			'dairy': `${base.dairy}/:id`,
+			'dairyList': `${base.dairyList}/:id`,
+			'project': base.project,
+			'about': base.about
+		},
 		'taps': {
-			'article': '/',
-			'project': '/project/',
-			'dairy': '/dairy/',
-			'about': '/about/'
+			'article': base.articles,
+			'project': base.project,
+			'dairy': base.dairy,
+			'about': base.about
 		}
 	}
 });

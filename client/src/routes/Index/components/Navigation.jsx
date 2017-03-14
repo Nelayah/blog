@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import './../assets/sass/navigation.scss';
 import config from './../../../config.js';
+
 import logo from './../assets/images/logo.png';
 
 const {
@@ -24,8 +25,6 @@ const tabStyle = {
 export default class Navigation extends Component {
 	constructor(props) {
 		super(props);
-		console.log('ok2');
-		console.log(this.props.pages);
 		let value = this.props.pages.getIn(['tapsHighlight']);
 		this.state = {
 			value
@@ -70,7 +69,7 @@ export default class Navigation extends Component {
 								style = { tabStyle }
 								onActive = { 
 									() => {
-										browserHistory.push(taps.article);
+										browserHistory.push(`/${config.getIn(['url', 'base', 'articleList'])}/1/`);
 									}
 								}
 								value = { taps.article }
@@ -81,7 +80,7 @@ export default class Navigation extends Component {
 								style = { tabStyle }
 								onActive = { 
 									() => {
-										browserHistory.push(taps.project);
+										browserHistory.push(`/${config.getIn(['url', 'base', 'project'])}`);
 									}
 								}
 								value = { taps.project }
@@ -92,7 +91,7 @@ export default class Navigation extends Component {
 								style = { tabStyle }
 								onActive = { 
 									() => {
-										browserHistory.push(taps.dairy);
+										browserHistory.push(`/${config.getIn(['url', 'base', 'dairyList'])}/1/`);
 									}
 								}
 								value = { taps.dairy }
@@ -103,7 +102,7 @@ export default class Navigation extends Component {
 								style = { tabStyle }
 								onActive = { 
 									() => {
-										browserHistory.push(taps.about);
+										browserHistory.push(`/${config.getIn(['url', 'base', 'about'])}`);
 									}
 								}
 								value = { taps.about }

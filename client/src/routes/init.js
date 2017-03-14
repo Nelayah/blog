@@ -1,13 +1,18 @@
 import Index from './Index/components/Index.jsx';
-import blog from './Blog/index.js';
+import config from './../config.js';
+
+import articles from './Articles/index.js';
+import articleList from './ArticleList/index.js';
+import dairy from './Dairy/index.js';
+import dairyList from './DairyList/index.js';
 import project from './Project/index.js';
 import about from './About/index.js';
-import dairy from './Dairy/index.js';
 
 const rootRoute = {
 	path: '/',
 	component: Index,
-	childRoutes: [blog, project, about, dairy]
+	indexRoute: { onEnter: (nextState, replace) => replace(`/${config.getIn(['url', 'base', 'articleList'])}/1/`) },
+	childRoutes: [articles, articleList, dairy, dairyList, project, about]
 };
 
 export default rootRoute;

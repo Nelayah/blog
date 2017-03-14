@@ -1,4 +1,3 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { fade } from 'material-ui/utils/colorManipulator';
 
 const $primary_color_dark = '#7b1fa2',
@@ -10,7 +9,7 @@ const $primary_color_dark = '#7b1fa2',
 	$secondary_text_color = '#757575',
 	$divider_color = '#bdbdbd';
 
-const muiTheme = getMuiTheme({
+const muiTheme = {
 	palette: {
 		primary1Color: $primary_color,
 		primary2Color: $primary_color_dark,
@@ -22,6 +21,7 @@ const muiTheme = getMuiTheme({
 		borderColor: $divider_color,
 		disabledColor: fade($primary_text_color, 0.3),
 		clockCircleColor: fade($primary_text_color, 0.07)
-	}
-});
+	},
+	userAgent: 'all'
+};
 export default muiTheme;

@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import RaisedButton from 'material-ui/RaisedButton';
-
 import actions from './../../../actions/init.js';
 import Sidebar from './Sidebar.jsx';
 import Navigation from './Navigation.jsx';
 import Footer from './Footer.jsx';
-import ArticleList from './ArticleList.jsx';
-import muiTheme from './../consts/muiTheme.js';
-import ajax from './../../../lib/ajax';
-import config from './../../../config';
 import './../assets/sass/index.scss';
-
-const {
-	blogList
-} = config.getIn(['address']).toJS();
 
 injectTapEventPlugin();
 
@@ -32,12 +21,13 @@ export default class Index extends Component {
 		this.clickCallback = this.clickCallback.bind(this);
 	}
 	static fetchData() {
+		console.log('fetchdata');
 		// ajax
-		const currentIndex = this.props.pages.get('currentIndex');
+/*		const currentIndex = this.props.pages.get('currentIndex');
 		ajax.get(blogList + currentIndex)
 			.then((resolve) => {
 				console.log(resolve.text);
-			});
+			});*/
 	}
 	clickCallback() {
 		console.log('paginations');
@@ -51,7 +41,6 @@ export default class Index extends Component {
 	}
 	render() {
 		return (
-			<MuiThemeProvider muiTheme={muiTheme}>
 				<div className="blog-wrap">
 					<Helmet
 						title="My Title"
@@ -68,29 +57,9 @@ export default class Index extends Component {
 					]}/>
 					<Navigation />
 					<Sidebar/>
-					{ this.props.children ||  
-						<div className="blog-container">
-							<div className="blogContent">
-								<ArticleList />
-							</div>
-							<div className="paginations">
-								<RaisedButton 
-									className="btn-previous"
-									label="PREVIOUS"
-									secondary={true}
-								/>
-								<div className="pages">1</div>
-								<RaisedButton 
-									className="btn-next"
-									label="NEXT"
-									secondary={true}
-								/>
-							</div>
-						</div> 
-					}
+						{ this.props.children }
 					<Footer />
 				</div>
-			</MuiThemeProvider>
 		);
 	}
 }

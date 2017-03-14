@@ -38,7 +38,9 @@ $divider-color: #bdbdbd;
  *  setStyle
  */
 html,
-body {
+body,
+#root,
+.blog-wrap {
 	font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, sans-serif;
 
 	width: 100%;
@@ -48,3 +50,4 @@ body {
 
 	@include aLabel($primary-text-color);
 }
+

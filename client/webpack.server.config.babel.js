@@ -1,5 +1,7 @@
+import webpack from 'webpack';
 var fs = require('fs');
 var path = require('path');
+const env = process.env.NODE_ENV;
 
 module.exports = {
 
@@ -8,7 +10,8 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].bundle.js',
-		path: path.resolve('./server/dist')
+		path: path.resolve('./server/dist'),
+		publicPath: '/'
 	},
 
 	target: 'node',
@@ -46,15 +49,28 @@ module.exports = {
 			]
 		}, {
 			test: /\.(png|jpg|gif|svg)$/,
-			loader: [
-				'url-loader'
-			]
+			loader: 'file-loader?name=static/images/[hash:8].[ext]'
 		}, {
 			test: /\.(woff|eot|woff2|ttf|svg)/,
-			loader: [
-				'url-loader'
-			]
+			loader: 'file-loader?name=static/font/[hash:8].[ext]'
 		}]
-	}
-
+	},
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify(env)
+			// 'process.env.NODE_ENV': JSON.stringify('development')
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			beautify: false,
+			mangle: {
+				screw_ie8: true,
+				keep_fnames: true
+			},
+			compress: {
+				screw_ie8: true,
+				warnings: false
+			},
+			comments: false
+		})
+	]
 };

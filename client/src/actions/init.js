@@ -6,6 +6,7 @@ export default Immutable.fromJS({
 	},
 	pages: {
 		currentIndex: 'CURRENTINDEX',
-		taps: 'TAPS'
+		taps: 'TAPS',
+		firstLoad: 'FIRSTLOAD'
 	}
 });
