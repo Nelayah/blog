@@ -1,0 +1,12 @@
+// 将键绑定放入此文件中以覆盖默认值
+[{
+  "key": "ctrl+shift+c",
+  "command": "csscomb.execute"
+},{
+  "key": "cmd+b",
+  "command": "HookyQR.beautify",
+  "when": "editorFocus"
+},{
+  "key": "alt+shift+f",
+  "command": "react.beautify"
+}]

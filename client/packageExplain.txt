@@ -1,0 +1,41 @@
+devDependencies:
+
+babel-preset-es2015
+babel-preset-react
+babel-preset-stage-2
+	set .babelrc preset 
+	(use what to compile)
+	compiles ES2015
+babel-cli
+	use ES2015 to write nodejs files
+babel-core
+	use babel api
+babel-plugin-transform-runtime (.babelrc plugins)
+babel-polyfill
+	use them to compiles more ES2015 api
+babel-plugin-transform-decorators-legacy
+	js decorators
+babel-plugin-transform-class-properties
+	es6 properties
+
+babel-register
+babel-register 是放在 node 里使用的。它的作用是替代 node 的 require 命令，与 node 自身的 require 不同，它可以加载 es2015、jsx 等类型文件。
+
+webpack2
+	bundle js module
+babel-loader
+	webpack loader ES2015 files
+
+gulp
+	frontend tools
+gulp-babel
+	use ES2015 to write gulpfile.js
+
+
+dependencies:
+
+react
+react-dom
+	frontend framework
+
+
