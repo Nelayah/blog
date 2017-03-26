@@ -1,0 +1,24 @@
+.notFound-wrap {
+	position: relative;
+
+	width: 1000px;
+	height: calc(100% - 515px);
+	margin: 0 auto;
+
+	text-align: center;
+	.notFound-container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%);
+		.material-icons {
+			font-size: 100px;
+			line-height: 120px;
+		}
+		h4 {
+			font-size: 50px;
+			line-height: 60px;
+		}
+	}
+}

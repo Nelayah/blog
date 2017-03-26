@@ -1,8 +1,9 @@
 import PageDetail from './../../PageDetail/components/pagedetail.jsx';
+import { connect } from 'react-redux';
 
+@connect(state => ({
+	...state
+}))
 export default class Articles extends PageDetail {
-	componentDidMount() {
-		super.componentDidMount();
-		console.log(this.props.params.blogId);
-	}
+	static meta = true
 }

@@ -29,8 +29,8 @@ module.exports = {
 		port: 9000,
 		historyApiFallback: true,
 		proxy: {
-			'/article/': {
-				target: 'http://localhost:5000',
+			'/api/**': {
+				target: 'http://localhost:8000',
 				secure: false
 			}
 		}
@@ -38,10 +38,11 @@ module.exports = {
 	entry: {
 		index: path.resolve('./src/index.jsx'),
 		vendor: path.resolve('./src/vendor.jsx'),
-		ui: path.resolve('./src/ui.jsx')
+		ui: path.resolve('./src/ui.jsx'),
+		immutable: path.resolve('./src/immutable.jsx')
 	},
 	output: {
-		filename: 'static/js/[name].[chunkhash:8].bundle.js',
+		filename: env === 'development' ? 'static/js/[name].bundle.js' : 'static/js/[name].[chunkhash:8].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/'
 	},
@@ -54,18 +55,21 @@ module.exports = {
 			test: /\.css$/,
 			exclude: /node_modules/,
 			loader: ExtractTextPlugin.extract({
-				fallbackLoader: 'style-loader',
-				loader: 'css-loader'
+				fallback: 'style-loader',
+				use: 'css-loader'
 			})
 		}, {
 			test: /\.scss$/,
 			exclude: /node_modules/,
 			loader: ExtractTextPlugin.extract({
-				fallbackLoader: 'style-loader',
-				loader: [
-					{ loader: 'css-loader!sass-loader', query: { modules: true, sourceMaps: true } },
-					'postcss-loader'
-				]
+				fallback: 'style-loader',
+				use: [{
+					loader: 'css-loader'
+				}, {
+					loader: 'postcss-loader'
+				}, {
+					loader: 'sass-loader'
+				}]
 			})
 		}, {
 			test: /\.(png|jpg|gif|svg)$/,
@@ -90,7 +94,7 @@ module.exports = {
 		 * 提取公用代码库或模块, code split
 		 */
 		new webpack.optimize.CommonsChunkPlugin({
-			name: ['vendor', 'ui'].reverse()
+			name: ['vendor', 'ui', 'immutable'].reverse()
 		}),
 		/*
 		 * ProvidePlugin可以让我们无需引入的情况下，以全局的模式直接使用模块变量。
@@ -99,7 +103,6 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			'React': 'react',
 			'Immutable': 'immutable',
-			'injectTapEventPlugin': 'react-tap-event-plugin',
 			'colorManipulator': 'material-ui/utils/colorManipulator',
 			'MuiThemeProvider': 'material-ui/styles/MuiThemeProvider',
 			'getMuiTheme': 'material-ui/styles/getMuiTheme',
@@ -108,7 +111,8 @@ module.exports = {
 			'Avatar': 'material-ui/Avatar',
 			'Tabs': 'material-ui/Tabs',
 			'Card': 'material-ui/Card',
-			'Chip': 'material-ui/Chip'
+			'Chip': 'material-ui/Chip',
+			'CircularProgress': 'material-ui/CircularProgress'
 		}),
 		new ExtractTextPlugin({ filename: 'static/css/styles.[chunkhash:8].css', disable: false, allChunks: false }),
 		new webpack.LoaderOptionsPlugin({
@@ -125,7 +129,6 @@ module.exports = {
 		...plugins,
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(env)
-			// 'process.env.NODE_ENV': JSON.stringify('development')
 		}),
 		new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
@@ -136,8 +139,12 @@ module.exports = {
 			favicon: './src/assets/images/favicon.ico',
 			files: {
 				'css': ['style.css'],
-				'js': ['index.js', 'vendor.js', 'ui.js'],
+				'js': ['index.js', 'vendor.js', 'ui.js', 'immutable.js'],
 				'chunks': {
+					'immutable': {
+						'entry': 'immutable.js',
+						'css': []
+					},
 					'ui': {
 						'entry': 'ui.js',
 						'css': []

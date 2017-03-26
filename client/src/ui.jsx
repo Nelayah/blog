@@ -7,3 +7,5 @@ import 'material-ui/Avatar';
 import 'material-ui/Tabs';
 import 'material-ui/Card';
 import 'material-ui/Chip';
+import 'material-ui/CircularProgress';
+

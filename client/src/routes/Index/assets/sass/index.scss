@@ -1,7 +1,59 @@
-@import 'reset.scss';
-@import 'base.scss';
-@import 'font.scss';
+@import "reset.scss";
+@import "base.scss";
+@import "font.scss";
 
 .toggleSidebar {
 	float: right;
+}
+.markdown {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		line-height: 1.4;
+	}
+	h3 {
+		font-size: 1.6875rem;
+
+		border-bottom: 1px solid #ddd;
+	}
+	h4 {
+		font-size: 1.4375rem;
+	}
+	pre {
+		font-size: 85%;
+		line-height: 1.45;
+
+		overflow: auto;
+
+		padding: 16px;
+
+		word-break: normal;
+
+		border-radius: 3px;
+		background-color: #f6f8fa;
+		code {
+			font-weight: normal;
+
+			padding: 0;
+
+			color: inherit;
+			border: none;
+			background-color: inherit;
+		}
+	}
+	code {
+		font-weight: normal;
+
+		padding: .125rem .3125rem .0625rem;
+
+		color: #333;
+		border: 1px solid #dfdfdf;
+		background-color: #f8f8f8;
+	}
+	a {
+		@include aLabel(#008cba);
+	}
 }

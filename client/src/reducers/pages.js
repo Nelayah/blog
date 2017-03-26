@@ -6,25 +6,35 @@ const {
 } = config.getIn(['url']).toJS();
 
 export const defaultState = Immutable.fromJS({
-	currentIndex: 1, 
 	tapsHighlight: taps.article,
-	isFirstLoad: true
+	isFirstLoad: false,
+	content: {}
 });
 
 export default function pagesReducer(state = defaultState, action) {
 	switch (action.type) {
-		case actions.getIn(['pages', 'currentIndex']): {
-			let tmp = state;
-			return tmp.merge({currentIndex: action.page});
-		}
-		case actions.getIn(['pages', 'taps']): {
-			let tmp = state;
-			return tmp.merge({tapsHighlight: action.taps});
-		}
-		case actions.getIn(['pages', 'firstLoad']): {
-			let tmp = state;
-			return tmp.merge({isFirstLoad: false});
-		}
+		case actions.getIn(['pages', 'taps']):
+			{
+				let tmp = state;
+				return tmp.merge({ tapsHighlight: action.taps });
+			}
+		case actions.getIn(['pages', 'firstload']):
+			{
+				let tmp = state;
+				return tmp.merge({ isFirstLoad: true });
+			}	
+		case actions.getIn(['pages', 'content']):
+			{
+				let tmp = state,
+					empty = {};
+
+				empty[action.pathname] = action.response;
+
+				let content = tmp.getIn(['content']);
+				content = content.merge(Immutable.fromJS(empty));
+
+				return tmp.merge({ content });
+			}
 		default:
 			return state;
 	}

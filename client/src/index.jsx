@@ -13,7 +13,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 let initState = {};
 
 _.keys(window.__PRELOADED_STATE__).map(key => {
-    initState[key] = Immutable.fromJS(window.__PRELOADED_STATE__[key]);
+	initState[key] = Immutable.fromJS(window.__PRELOADED_STATE__[key]);
 });
 
 const store = createStore(reducers, initState);
@@ -21,12 +21,18 @@ let rootElement = document.getElementById('root');
 
 match({ history: browserHistory, routes: rootRoute }, (error, redirectLocation, renderProps) => {
 	render((
-		<MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
-			<Provider store={store}>
-				<Router {...renderProps} />
+		<MuiThemeProvider 
+			muiTheme={ getMuiTheme(muiTheme) }
+		>
+			<Provider 
+				store={store}
+			>
+				<Router 
+					history={browserHistory} 
+					routes={rootRoute} 
+					{...renderProps} 
+				/>
 			</Provider>
 		</MuiThemeProvider>
 	), rootElement);
 });
-
-

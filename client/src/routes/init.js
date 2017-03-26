@@ -7,12 +7,14 @@ import dairy from './Dairy/index.js';
 import dairyList from './DairyList/index.js';
 import project from './Project/index.js';
 import about from './About/index.js';
+import notFound from './404/index.js';
+import page404 from './404/404.js';
 
 const rootRoute = {
 	path: '/',
 	component: Index,
 	indexRoute: { onEnter: (nextState, replace) => replace(`/${config.getIn(['url', 'base', 'articleList'])}/1/`) },
-	childRoutes: [articles, articleList, dairy, dairyList, project, about]
+	childRoutes: [articles, articleList, dairy, dairyList, project, about, page404, notFound]
 };
 
 export default rootRoute;

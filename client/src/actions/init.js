@@ -5,8 +5,11 @@ export default Immutable.fromJS({
 		toggle: 'TOGGLE'
 	},
 	pages: {
-		currentIndex: 'CURRENTINDEX',
-		taps: 'TAPS',
-		firstLoad: 'FIRSTLOAD'
+		content: 'CONTENT',
+		firstload: 'FIRSTLOAD',
+		taps: 'TAPS'
+	},
+	website: {
+		metaupdate: 'METAUPDATE'
 	}
 });

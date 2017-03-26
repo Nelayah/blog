@@ -19,6 +19,7 @@ const tabStyle = {
 	height: '64px'
 };
 
+
 @connect(state => ({
 		...state
 	}))

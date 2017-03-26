@@ -1,8 +1,9 @@
 import PageDetail from './../../PageDetail/components/pagedetail.jsx';
+import { connect } from 'react-redux';
 
+@connect(state => ({
+	...state
+}))
 export default class Project extends PageDetail {
-	componentDidMount() {
-		super.componentDidMount();
-		console.log('Here is project!!');
-	}
+	static meta = true
 }
