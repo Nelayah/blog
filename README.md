@@ -4,7 +4,7 @@ The blog is built with react, react-router, redux, materail ui, immutable, webpa
 ## 前端
 ### 客户端渲染(client-side render)
 1. UI层，使用Meterial UI库
-2. 逻辑层，使用react全家桶，react，react-router@3.X，redux，immutablejs, 其中还使用react-router-redux，进行全局store管理。
+2. 逻辑层，使用react全家桶，react，react-router 3.X，redux，immutablejs, 其中还使用react-router-redux，进行全局store管理。
 3. 博客内容，使用markdown语法，用showdownjs来转换md内容。
 4. 使用es6，用babel转es5
 5. 使用sass，其中浏览器兼容性用postcss来polyfill，ui库行内嵌套样式使用的inline-style-prefix来polyfill，useragent为all
@@ -16,10 +16,13 @@ The blog is built with react, react-router, redux, materail ui, immutable, webpa
 
 ### 服务端渲染(server-side render)
 1. 采用nodejs做服务端渲染，使用express，只进行页面响应。而API请求端口代理到另一个服务端,该服务端只进行api响应处理，以此达到前后端分离。
-2. 这里使用react-router@3.X(ps: 因为react-router@1.X，@2.X，@3.X和@4.X的API各不兼容...)。
+2. 这里使用react-router@3.X(ps: 因为react-router 1.X，2.X，3.X和4.X的API各不兼容...)。
 3. 客户端和服务端api请求进行统一约束
 4. 检测浏览器useraget，低版本浏览器返回另外页面。
 5. 使用中间件compression进行响应文件压缩
+
+### API服务端
+[API server](https://github.com/Nelayah/blogCMS)
 
 ## License
 
