@@ -21,7 +21,7 @@ The blog is built with react, react-router, redux, materail ui, immutable, webpa
 4. 检测浏览器useraget，低版本浏览器返回另外页面。
 5. 使用中间件compression进行响应文件压缩
 
-### API服务端
+## 后端
 [API server](https://github.com/Nelayah/blogCMS)
 
 ## License
