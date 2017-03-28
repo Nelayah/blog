@@ -21,6 +21,7 @@ const style = {
 		padding: '20px'
 	},
 	cardTitleStyle: {
+		fontWeight: 'bold',
 		textAlign: 'center'
 	},
 	pageDetailWrap: {
@@ -95,7 +96,6 @@ export default class PageDetail extends Base {
 					>
 						<CardTitle 
 							title={ response[location.pathname].title } 
-							subtitle={ response[location.pathname].time }
 							style ={ style.cardTitleStyle }
 						/>
 						<div 

@@ -25,6 +25,9 @@ const style = {
 		margin: '20px auto 0 auto',
 		cursor: 'pointer'
 	},
+	cardTitleStyle: {
+		fontWeight: 'bold'
+	},
 	card: {
 		padding: '10px'
 	},
@@ -140,7 +143,6 @@ export default class CardItems extends Base {
 											pk,
 											title,
 											digest,
-											time,
 											tag
 										} = element;
 
@@ -158,7 +160,7 @@ export default class CardItems extends Base {
 													>
 														<CardTitle 
 															title={ title } 
-															subtitle={ time } 
+															style={ style.cardTitleStyle }
 														/>
 														<div 
 															className="card-label" 
