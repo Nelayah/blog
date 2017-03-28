@@ -5,7 +5,9 @@
 .toggleSidebar {
 	float: right;
 }
+
 .markdown {
+	@include aLabel(#008cba);
 	h1,
 	h2,
 	h3,
@@ -14,22 +16,36 @@
 	h6 {
 		line-height: 1.4;
 	}
+	h1 {
+		font-size: 30px;
+	}
+	h2 {
+		font-size: 21px;
+	}
 	h3 {
-		font-size: 1.6875rem;
-
-		border-bottom: 1px solid #ddd;
+		font-size: 16px;
 	}
 	h4 {
-		font-size: 1.4375rem;
+		font-size: 14px;
+	}
+	h5 {
+		font-size: 12px;
+	}
+	h6 {
+		font-size: 11px;
+	}
+	p {
+		font-size: 16px;
 	}
 	pre {
-		font-size: 85%;
-		line-height: 1.45;
+		font-size: 14px;
+		line-height: 1.6;
 
 		overflow: auto;
 
 		padding: 16px;
 
+		white-space: pre;
 		word-break: normal;
 
 		border-radius: 3px;
@@ -45,6 +61,7 @@
 		}
 	}
 	code {
+		font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
 		font-weight: normal;
 
 		padding: .125rem .3125rem .0625rem;
@@ -52,8 +69,5 @@
 		color: #333;
 		border: 1px solid #dfdfdf;
 		background-color: #f8f8f8;
-	}
-	a {
-		@include aLabel(#008cba);
 	}
 }

@@ -299,7 +299,7 @@ const Alphabet = (str) => {
 		}
 		result += '\n';
 	};
-	result += '\n若对这个BLOG有任何建议，恳请能EMAIL告诉我。EMAIL: hayalen@qq.com m(_ _)m\nBLOG_CREATETIME：2017-03-24';
+	result += '\n若对这个BLOG有任何建议，恳请能EMAIL告诉我。EMAIL: hayalen@qq.com m(_ _)m\nBLOG_CREATETIME：2017-03-20';
 	return result;
 };
 

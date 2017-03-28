@@ -10,7 +10,7 @@ The blog is built with react, react-router, redux, materail ui, immutable, webpa
 5. 使用sass，其中浏览器兼容性用postcss来polyfill，ui库行内嵌套样式使用的inline-style-prefix来polyfill，useragent为all
 6. AJAX，使用superagent + promise, ie11的兼容使用了babel-polyfill
 7. 用webpack2来完成打包，code split和资源替换。ExtractTextPlugin抽取react组件引用的sass文件；CommonsChunkPlugin和ProvidePlugin进行code split，以ui库，所使用的框架和逻辑代码来分离成ui.js，vendor.js，immutable.js和index.js；用ejs做模板，HtmlWebpackPlugin进行资源替换，其中静态文件的hash值使用WebpackMd5Hash。
-8. 架构方面，以react-router为基准，每个router对应着一个组件，采用异步路由，做到按需加载。react-router匹配所有路由，不存在的路由跳转404。
+8. 架构方面，以react-router为基准，每个router对应着一个组件，采用动态路由，做到延时加载。react-router匹配所有路由，不存在的路由跳转404。
 9. react-helmet 进行meta标签替换。
 10. eslint, 进行js代码规范，csscomb进行sass代码规范。
 
