@@ -47,6 +47,31 @@ const style = {
 	},
 	cardText: {
 		lineHeight: '30px'
+	},
+	paginations: {
+		marginTop: '20px',
+		marginBottom: '60px',
+		textAlign: 'center'
+	},
+	btnPrevious: {
+		float: 'left'
+	},
+	btnNext: {
+		float: 'right'
+	},
+	pages: {
+		fontSize: '14px',
+		lineHeight: '36px',
+		display: 'inline-block',
+		boxSizing: 'border-box',
+		width: '36px',
+		height: '36px',
+		transition: 'all 450ms cubic-bezier(.23, 1, .32, 1) 0ms',
+		textAlign: 'center',
+		color: 'rgba(0, 0, 0, .870588)',
+		borderRadius: '50%',
+		backgroundColor: 'rgb(255, 255, 255)',
+		boxShadow: 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px'
 	}
 };
 
@@ -188,6 +213,7 @@ export default class CardItems extends Base {
 						</div>
 						<div 
 							className="paginations"
+							style={ style.paginations }
 						>
 							<RaisedButton 
 								className="btn-previous"
@@ -195,9 +221,11 @@ export default class CardItems extends Base {
 								secondary={true}
 								disabled={response[location.pathname].previous ? false : true}
 								onTouchTap = { this.handlePrevious }
+								style={ style.btnPrevious }
 							/>
 							<div 
 								className="pages"
+								style={ style.pages }
 							>
 								{ this.props.params.id }
 							</div>
@@ -207,6 +235,7 @@ export default class CardItems extends Base {
 								secondary={true}
 								disabled={response[location.pathname].next ? false : true}
 								onTouchTap = { this.handleNext }
+								style={ style.btnNext }
 							/>
 						</div>
 					</div> 

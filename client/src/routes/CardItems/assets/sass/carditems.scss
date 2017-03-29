@@ -3,38 +3,6 @@
 
 	opacity: 1;
 }
-.blog-container .paginations {
-	margin-top: 20px;
-	margin-bottom: 60px;
-
-	text-align: center;
-	.btn-previous {
-		float: left;
-	}
-	.btn-next {
-		float: right;
-	}
-	.pages {
-		font-size: 14px;
-		line-height: 36px;
-
-		display: inline-block;
-
-		box-sizing: border-box;
-		width: 36px;
-		height: 36px;
-
-		transition: all 450ms cubic-bezier(.23, 1, .32, 1) 0ms;
-		text-align: center;
-
-		color: rgba(0, 0, 0, .870588);
-		border-radius: 50%;
-		background-color: rgb(255, 255, 255);
-		box-shadow: rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px;
-
-		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	}
-}
 @keyframes cardFadeIn {
 	from {
 		opacity: 0;
