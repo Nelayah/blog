@@ -117,9 +117,6 @@ export default class CardItems extends Base {
 		const {
 			childrenUrl
 		} = this.state;
-		if (response[location.pathname] && response[location.pathname].results.length === 0) {
-			browserHistory.push('/404/');
-		}
 
 		return (
 			<div 

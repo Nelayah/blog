@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { browserHistory } from 'react-router';
 import actions from './../../../actions/init.js';
 import ajax from './../../../lib/ajax.js';
 import config from './../../../config.js';
@@ -16,10 +17,8 @@ export default class Base extends Component {
 
 		if (!response[location.pathname]) {
 			ajax.get(`/api${pathname}`)
-				.catch((reject) => {
-					let result = JSON.parse(reject.response.text);
-					dispatch({ type: actions.getIn(['pages', 'content']), pathname: location.pathname, response: result });
-					return false;
+				.catch(() => {
+					browserHistory.push('/404/');
 				})
 				.then((resolve) => {
 					let result = JSON.parse(resolve.text);
@@ -38,8 +37,8 @@ export default class Base extends Component {
 							keywords
 						});
 					}
-					if (!resolve) {
-						return;
+					if (result.results && result.results.length === 0) {
+						browserHistory.push('/404/');
 					}
 					dispatch({ type: actions.getIn(['pages', 'content']), pathname: location.pathname, response: result });
 				});
