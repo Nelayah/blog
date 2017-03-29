@@ -1,7 +1,7 @@
 # 博客 - React 同构应用的实践
 The blog is built with react, react-router, redux, materail ui, immutable, webpack2, es6, ...
 
-[个人BLOG实例](https://www.nonjs.com)
+####个人BLOG实例：[https://www.nonjs.com](https://www.nonjs.com)
 
 ## 前端
 ### 客户端渲染(client-side render)
