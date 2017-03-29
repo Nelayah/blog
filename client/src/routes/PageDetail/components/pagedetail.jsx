@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import CircularProgress from 'material-ui/CircularProgress';
 import Chip from 'material-ui/Chip';
@@ -79,9 +78,6 @@ export default class PageDetail extends Base {
 	}
 	render() {
 		const response = this.props.pages.getIn(['content']).toJS();
-		if (response[location.pathname] && response[location.pathname].detail) {
-			browserHistory.push('/404/');
-		}
 		return (
 			<div 
 				className={ this.state.fadeIn ? 'pageFadeIn pageDetail-wrap' : 'pageDetail-wrap'} 

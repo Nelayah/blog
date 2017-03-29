@@ -14,6 +14,7 @@ import rootRoute from './../../src/routes/init.js';
 import reducers from './../../src/reducers/init';
 import template from './../../dist/template.html';
 import browserSupportHtml from './browserSupport.html';
+import errorHtml from './error.html';
 import config from './../../src/config.js';
 import actions from './../../src/actions/init.js';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -56,20 +57,24 @@ const browserSupport = {
 
 function render(req, res, renderProps) {
 	let store = createStore(reducers),
-		highlight = tapHighlight(req.url);
+		highlight = tapHighlight(req.url),
+		isError = false;
 
 	store.dispatch({ type: actions.getIn(['pages', 'taps']), taps: highlight });
 	ajax.get(`${apiServer}/api${req.url}`)
-		.catch((reject) => {
-			let result = JSON.parse(reject.response.text);
-			store.dispatch({ type: actions.getIn(['pages', 'content']), pathname: req.url, response: result });
-			return false;
+		.catch(() => {
+			res.send(errorHtml);
+			isError = true;
 		})
 		.then((resolve) => {
-			if (resolve) {
-				let result = JSON.parse(resolve.text);
-				store.dispatch({ type: actions.getIn(['pages', 'content']), pathname: req.url, response: result });
+			if (isError) {
+				return;				
 			}
+			let result = JSON.parse(resolve.text);
+			if (result.results && result.results.length === 0) {
+				res.send(errorHtml);
+			}
+			store.dispatch({ type: actions.getIn(['pages', 'content']), pathname: req.url, response: result });
 			const content = renderToString(
 				<MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
 					<Provider store={store}>
