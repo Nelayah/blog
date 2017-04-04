@@ -11,4 +11,4 @@ gulp.task('deleteBundle', ['deleteServer'], () => {
 		.pipe(clean());
 });
 
-gulp.task('default', ['deleteServer']);
+gulp.task('default', ['deleteBundle']);
