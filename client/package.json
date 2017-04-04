@@ -8,7 +8,8 @@
     "client:dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.client.config.babel.js",
     "server:build": "cross-env NODE_ENV=production webpack --config webpack.server.config.babel.js",
     "preserver:pd": "npm run server:build",
-    "server:pd": "cross-env NODE_ENV=production node server/dist/server.bundle.js"
+    "server:pd": "cross-env NODE_ENV=production node server/dist/server.bundle.js",
+    "clean": "gulp"
   },
   "author": "Nelayah",
   "license": "ISC",
@@ -38,6 +39,7 @@
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.26.0",
     "node-sass": "^4.0.0",

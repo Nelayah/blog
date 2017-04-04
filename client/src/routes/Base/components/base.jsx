@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { browserHistory } from 'react-router';
 import actions from './../../../actions/init.js';
 import ajax from './../../../lib/ajax.js';
+import { tapHighlight } from './../../../lib/tapHighlight.js';
 import config from './../../../config.js';
 
 export default class Base extends Component {
@@ -43,5 +44,12 @@ export default class Base extends Component {
 					dispatch({ type: actions.getIn(['pages', 'content']), pathname: location.pathname, response: result });
 				});
 		}
+	}
+	componentWillMount() {
+		const highlight = tapHighlight(location.pathname);
+
+		const { dispatch } = this.props;
+
+		dispatch({ type: actions.getIn(['pages', 'taps']), taps: highlight });
 	}
 }

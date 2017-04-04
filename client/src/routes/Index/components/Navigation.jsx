@@ -63,7 +63,7 @@ export default class Navigation extends Component {
 						</div>
 					</div>
 					<div className="tabs-wrap">
-						<Tabs className="tabs-container" value = { this.state.value } onChange={this.handleChange}>
+						<Tabs className="tabs-container" value = { this.props.pages.getIn(['tapsHighlight']) } onChange={this.handleChange}>
 							<Tab 
 								icon={<i className="material-icons">home</i>}
 								label="Article"

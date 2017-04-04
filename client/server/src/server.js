@@ -68,7 +68,7 @@ function render(req, res, renderProps) {
 		})
 		.then((resolve) => {
 			if (isError) {
-				return;				
+				return;
 			}
 			let result = JSON.parse(resolve.text);
 			if (result.results && result.results.length === 0) {
@@ -107,13 +107,19 @@ app.get('*', (req, res) => {
 		global.location = {
 			pathname: req.url
 		};
+
+		if (error) {
+			res.status(500).send(errorHtml);
+		};
+
 		if (redirectLocation) {
 			return res.redirect(302, `${redirectLocation.pathname}${redirectLocation.search}`);
 		}
 		if (renderProps) {
 			return render(req, res, renderProps);
-		}
-		return false;
+		} 
+		
+		return res.status(404).send(errorHtml);
 
 	});
 });
